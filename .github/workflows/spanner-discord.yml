@@ -1,0 +1,10 @@
+name: Spanner Discord Bot
+on:
+  schedule:
+    - cron: '45 * * * MON-SAT'
+jobs:
+  ping:
+    if: always()
+    runs-on: 	ubuntu-20.04
+    steps:
+       - run: curl https://spanner-discord-bot-obnerd.herokuapp.com/
