@@ -1,7 +1,7 @@
 name: Spanner Discord Bot
 on:
   schedule:
-    - cron: '45 5-12 * * MON-SAT'
+    - cron: '45 0-5,13-23 * * MON-SAT'
 jobs:
   ping:
     if: always()
