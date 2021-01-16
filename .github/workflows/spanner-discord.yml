@@ -14,4 +14,5 @@ jobs:
         with:
           # Desired timezone for Linux
           timezoneLinux: "Asia/Kolkata"
+      - run: date
       - run: curl https://spanner-discord-bot-obnerd.herokuapp.com/
