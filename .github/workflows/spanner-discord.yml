@@ -1,7 +1,7 @@
 name: Spanner Discord Bot
 on:
   schedule:
-    - cron: '45 8-23 * * MON-SAT'
+    - cron: '45 * * * *'
 jobs:
   ping:
     if: always()
@@ -14,5 +14,13 @@ jobs:
         with:
           # Desired timezone for Linux
           timezoneLinux: "Asia/Kolkata"
-      - run: date
-      - run: curl https://spanner-discord-bot-obnerd.herokuapp.com/
+      - run: |
+          echo 'DAY_OF_WEEK<<EOF' >> $GITHUB_ENV
+          date +%u >> $GITHUB_ENV
+          echo 'EOF' >> $GITHUB_ENV
+      - run: |
+          echo 'HOUR_OF_DAY<<EOF' >> $GITHUB_ENV
+          date +%H >> $GITHUB_ENV
+          echo 'EOF' >> $GITHUB_ENV          
+      -  if: env.DAY_OF_WEEK != 7 && 7 <= env.HOUR_OF_DAY <= 23
+         run: curl https://spanner-discord-bot-obnerd.herokuapp.com/
