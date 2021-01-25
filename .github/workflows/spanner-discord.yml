@@ -22,5 +22,5 @@ jobs:
           echo 'HOUR_OF_DAY<<EOF' >> $GITHUB_ENV
           date +%H >> $GITHUB_ENV
           echo 'EOF' >> $GITHUB_ENV          
-      -  if: env.DAY_OF_WEEK != 7 && 7 <= env.HOUR_OF_DAY <= 23
+      -  if: env.DAY_OF_WEEK != 7 && 7 <= number(env.HOUR_OF_DAY) <= 23
          run: curl https://spanner-discord-bot-obnerd.herokuapp.com/
