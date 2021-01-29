@@ -21,6 +21,7 @@ jobs:
       - run: |
           echo 'HOUR_OF_DAY<<EOF' >> $GITHUB_ENV
           date +%H >> $GITHUB_ENV
-          echo 'EOF' >> $GITHUB_ENV          
-      -  if: env.DAY_OF_WEEK != 7 && 7 <= env.HOUR_OF_DAY <= 23
+          echo 'EOF' >> $GITHUB_ENV
+          # Sorry for this ;D          
+      -  if: env.DAY_OF_WEEK != 7 && env.HOUR_OF_DAY != 00 && env.HOUR_OF_DAY != 01 && env.HOUR_OF_DAY != 02 && env.HOUR_OF_DAY != 03 && env.HOUR_OF_DAY != 04 && env.HOUR_OF_DAY != 05 && env.HOUR_OF_DAY != 06 && env.HOUR_OF_DAY != 07
          run: curl https://spanner-discord-bot-obnerd.herokuapp.com/
